@@ -1,0 +1,47 @@
+{
+    "sun": {
+        "friend": ["moon", "mars", "jupiter", "ketu"],
+        "enemy": ["venus", "saturn", "rahu"],
+        "neutral": ["mercury"]
+    },
+    "moon": {
+        "friend": ["sun", "mercury"],
+        "enemy": ["rahu", "ketu"],
+        "neutral": ["mars", "jupiter", "venus", "saturn"]
+    },
+    "mars": {
+        "friend": ["sun", "moon", "jupiter", "ketu"],
+        "enemy": ["mercury", "rahu"],
+        "neutral": ["venus", "saturn"]
+    },
+    "mercury": {
+        "friend": ["sun", "venus"],
+        "enemy": ["moon", "ketu", "rahu"],
+        "neutral": ["mars", "jupiter", "saturn"]
+    },
+    "jupiter": {
+        "friend": ["sun", "moon", "mars", "ketu"],
+        "enemy": ["mercury", "venus", "rahu"],
+        "neutral": ["saturn"]
+    },
+    "venus": {
+        "friend": ["mercury", "saturn", "rahu", "ketu"],
+        "enemy": ["sun", "moon"],
+        "neutral": ["mars", "jupiter"]
+    },
+    "saturn": {
+        "friend": ["mercury", "venus", "rahu"],
+        "enemy": ["sun", "moon", "mars", "ketu"],
+        "neutral": ["jupiter"]
+    },
+    "rahu": {
+        "friend": ["jupiter", "venus", "saturn", "ketu"],
+        "enemy": ["sun", "moon", "mars"],
+        "neutral": ["mercury"]
+    },
+    "ketu": {
+        "friend": ["mars", "venus", "saturn", "rahu"],
+        "enemy": ["sun", "moon"],
+        "neutral": ["mercury", "jupiter"]
+    }
+}
