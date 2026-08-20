@@ -9,6 +9,25 @@ $(document).ready(function () {
 
     let planetaryPositions = {};
 
+    $("#GetNRButton").on("click", function () {
+        if (PNR == null) {
+            alert("Data Loading.....please try again");
+        }
+        else {
+            getNRTable(PNR);
+            $("#HideNRButton").addClass("d-inline");
+            $("#HideNRButton").removeClass("d-none");
+            $("#GetNRButton").addClass("d-none");
+        }
+    });
+
+    $("#HideNRButton").on("click", function () {
+        $("#HideNRButton").addClass("d-none");
+        $("#HideNRButton").removeClass("d-inline");
+        $("#GetNRButton").removeClass("d-none");
+        $("#NaturalRelationshipTable").html("");
+    });
+
 
     // ========================================================================================= //
     // ================ Fetching form data start ==============================================//
@@ -168,6 +187,58 @@ $(document).ready(function () {
 
 });
 
+function getNRTable(PNR) {
+
+    let table = `
+        <h5 class="mb-3 text-center">Natural Planetary Relationship</h5>
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Planet</th>
+                    <th>Friend</th>
+                    <th>Neutral</th>
+                    <th>Enemy</th>
+                </tr>
+            </thead>
+
+            <tbody>
+    `;
+
+    for (let planet in PNR) {
+
+        table += `
+            <tr>
+                <td>${formatPlanetName(planet)}</td>
+
+                <td>
+                    ${PNR[planet].friend
+                .map(formatPlanetName)
+                .join(", ")}
+                </td>
+
+                <td>
+                    ${PNR[planet].neutral
+                .map(formatPlanetName)
+                .join(", ")}
+                </td>
+
+                <td>
+                    ${PNR[planet].enemy
+                .map(formatPlanetName)
+                .join(", ")}
+                </td>
+            </tr>
+        `;
+    }
+
+    table += `
+            </tbody>
+        </table>
+    `;
+
+    $("#NaturalRelationshipTable").html(table);
+}
+
 function generateCompRelTable(data) {
 
     let table = `
@@ -196,32 +267,32 @@ function generateCompRelTable(data) {
 
                 <td>
                     ${data[planet].friend
-                        .map(formatPlanetName)
-                        .join(", ")}
+                .map(formatPlanetName)
+                .join(", ")}
                 </td>
 
                 <td>
                     ${data[planet].greatFriend
-                        .map(formatPlanetName)
-                        .join(", ")}
+                .map(formatPlanetName)
+                .join(", ")}
                 </td>
 
                 <td>
                     ${data[planet].neutral
-                        .map(formatPlanetName)
-                        .join(", ")}
+                .map(formatPlanetName)
+                .join(", ")}
                 </td>
 
                 <td>
                     ${data[planet].enemy
-                        .map(formatPlanetName)
-                        .join(", ")}
+                .map(formatPlanetName)
+                .join(", ")}
                 </td>
 
                 <td>
                     ${data[planet].extremeEnemy
-                        .map(formatPlanetName)
-                        .join(", ")}
+                .map(formatPlanetName)
+                .join(", ")}
                 </td>
             </tr>
         `;
