@@ -9,25 +9,6 @@ $(document).ready(function () {
 
     let planetaryPositions = {};
 
-    $("#GetNRButton").on("click", function () {
-        if (PNR == null) {
-            alert("Data Loading.....please try again");
-        }
-        else {
-            getNRTable(PNR);
-            $("#HideNRButton").addClass("d-inline");
-            $("#HideNRButton").removeClass("d-none");
-            $("#GetNRButton").addClass("d-none");
-        }
-    });
-
-    $("#HideNRButton").on("click", function () {
-        $("#HideNRButton").addClass("d-none");
-        $("#HideNRButton").removeClass("d-inline");
-        $("#GetNRButton").removeClass("d-none");
-        $("#NaturalRelationshipTable").html("");
-    });
-
 
     // ========================================================================================= //
     // ================ Fetching form data start ==============================================//
@@ -185,7 +166,43 @@ $(document).ready(function () {
         compound_relationship = {};
     });
 
+
+    $("#GetNRButton").on("click", function () {
+        if (PNR == null) {
+            alert("Data Loading.....please try again");
+        }
+        else {
+            getNRTable(PNR);
+            showNaturalButton();
+        }
+    });
+
+    $("#HideNRButton").on("click", function () {
+        hideNaturalButton();
+    });
+
+    $("#ClearTableButton").on("click", function () {
+        $("#NaturalRelationshipTable").html("");
+        $("#TempRelationshipTable").html("");
+        $("#CompRelationshipTable").html("");
+
+        hideNaturalButton();
+    });
+
 });
+
+function hideNaturalButton() {
+    $("#HideNRButton").addClass("d-none");
+    $("#HideNRButton").removeClass("d-inline");
+    $("#GetNRButton").removeClass("d-none");
+    $("#NaturalRelationshipTable").html("");
+}
+
+function showNaturalButton() {
+    $("#HideNRButton").addClass("d-inline");
+    $("#HideNRButton").removeClass("d-none");
+    $("#GetNRButton").addClass("d-none");
+}
 
 function getNRTable(PNR) {
 
